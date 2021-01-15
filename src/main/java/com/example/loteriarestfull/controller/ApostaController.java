@@ -20,12 +20,22 @@ public class ApostaController {
     private ApostaRepository apostaRepository;
 
     @PostMapping
-    public Aposta criarAposta(@RequestBody Aposta aposta){
-        aposta.pimeira_dezena = 1;
-        aposta.segunda_dezena = 2;
-        aposta.terceira_dezena = 3;
-        aposta.quarta_dezena = 4;
-        aposta.quinta_dezena = 5;
+    public Aposta criarAposta(@RequestBody Aposta aposta) {
+
+        //TODO: resolver o problema de números duplicados nas dezenas
+        //TODO: resolver o problema de e-mails duplicados em Apostador
+        //com o nextInt é possível que as dezenas fiquem duplicadas, como resolver este problema?
+
+
+        int VALOR_LIMITE = 60;
+
+        Random gerador = new Random();
+
+        aposta.pimeira_dezena = gerador.nextInt(VALOR_LIMITE);
+        aposta.segunda_dezena = gerador.nextInt(VALOR_LIMITE);
+        aposta.terceira_dezena = gerador.nextInt(VALOR_LIMITE);
+        aposta.quarta_dezena = gerador.nextInt(VALOR_LIMITE);
+        aposta.quinta_dezena = gerador.nextInt(VALOR_LIMITE);
         return this.apostaRepository.save(aposta);
 
     }
