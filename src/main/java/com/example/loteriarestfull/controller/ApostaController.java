@@ -38,7 +38,7 @@ public class ApostaController {
 
         Random gerador = new Random();
         Aposta nova_aposta = new Aposta();
-        nova_aposta.pimeira_dezena = gerador.nextInt(VALOR_LIMITE);
+        nova_aposta.primeira_dezena = gerador.nextInt(VALOR_LIMITE);
         nova_aposta.segunda_dezena = gerador.nextInt(VALOR_LIMITE);
         nova_aposta.terceira_dezena = gerador.nextInt(VALOR_LIMITE);
         nova_aposta.quarta_dezena = gerador.nextInt(VALOR_LIMITE);

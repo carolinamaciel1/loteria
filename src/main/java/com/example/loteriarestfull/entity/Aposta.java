@@ -16,8 +16,8 @@ public class Aposta {
     @ManyToOne
     public Apostador apostador;
 
-    @Column(name = "pimeira_dezena")
-    public int pimeira_dezena;
+    @Column(name = "primeira_dezena")
+    public int primeira_dezena;
 
     @Column(name = "segunda_dezena")
     public int segunda_dezena;
@@ -32,10 +32,10 @@ public class Aposta {
     public int quinta_dezena;
 
     //Construtor
-    public Aposta(long id, Apostador apostador, int pimeira_dezena, int segunda_dezena, int terceira_dezena, int quarta_dezena, int quinta_dezena) {
+    public Aposta(long id, Apostador apostador, int primeira_dezena, int segunda_dezena, int terceira_dezena, int quarta_dezena, int quinta_dezena) {
         this.id = id;
         this.apostador = apostador;
-        this.pimeira_dezena = pimeira_dezena;
+        this.primeira_dezena = primeira_dezena;
         this.segunda_dezena = segunda_dezena;
         this.terceira_dezena = terceira_dezena;
         this.quarta_dezena = quarta_dezena;
