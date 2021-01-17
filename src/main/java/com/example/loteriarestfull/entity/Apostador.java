@@ -1,47 +1,55 @@
-//package com.example.loteriarestfull.entity;
-//
-//import javax.persistence.*;
-//
-//@Entity
-//@Table(name = "apostador")
-//public class Apostador {
-//
-//    public Apostador(String email, Aposta aposta_id) {
-//        this.email = email;
-//        this.aposta_id = aposta_id;
-//    }
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private long id;
-//
-//    @Column(name = "email")
-//    private String email;
-//
-//    @Column(name="aposta")
-//    private Aposta aposta_id;
-//
-//    public long getId() {
-//        return id;
-//    }
-//
-//    public void setId(long id) {
-//        this.id = id;
-//    }
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
-//
-//    public Aposta getAposta_id() {
-//        return aposta_id;
-//    }
-//
-//    public void setAposta_id(Aposta aposta_id) {
-//        this.aposta_id = aposta_id;
-//    }
-//}
+package com.example.loteriarestfull.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@JsonIgnoreProperties(value = {"apostas"})
+@Table(name = "apostador")
+public class Apostador {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(name = "email")
+    private String email;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "apostador")
+    private List<Aposta> apostas;
+
+    //Construtor
+    public Apostador(long id, String email, List<Aposta> apostas) {
+        this.id = id;
+        this.email = email;
+        this.apostas = apostas;
+    }
+
+    public Apostador() {
+
+    }
+
+    //Getters and Setters
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @JsonIgnore
+    public List<Aposta> getApostas() {
+        return apostas;
+    }
+
+    public void setApostas(List<Aposta> apostas) {
+        this.apostas = apostas;
+    }
+}
+
+
