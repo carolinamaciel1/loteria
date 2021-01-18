@@ -11,3 +11,4 @@ public interface ApostadorRepository extends JpaRepository<Apostador, Long> {
 
     Optional<Apostador> findByEmail(String email);
 }
+
